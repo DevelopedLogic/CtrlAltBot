@@ -14,6 +14,11 @@ public class EasterEggs extends ListenerAdapter{
 	        eb.setDescription("Save complete!"); //Set the contents of the fancy embed box
 	        eb.setColor(new Color(255, 0, 0)); //Set the stripe colour of the fancy embed box
 			event.getChannel().sendMessage(eb.build()).queue(); //Send the fancy embed box as a message
+		}else if(message.equals("Ctrl+a")){
+			EmbedBuilder eb = new EmbedBuilder(); //Make a fancy embed box
+	        eb.setDescription("Selected all!"); //Set the contents of the fancy embed box
+	        eb.setColor(new Color(255, 0, 0)); //Set the stripe colour of the fancy embed box
+			event.getChannel().sendMessage(eb.build()).queue(); //Send the fancy embed box as a message
 		}
     }
 }

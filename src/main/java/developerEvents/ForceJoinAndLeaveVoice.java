@@ -21,7 +21,7 @@ public class ForceJoinAndLeaveVoice extends ListenerAdapter{
 		if(isDeveloper){
 			if(message[0].equals(prefix+"!fvcj")){
 				if(message.length < 2){
-					event.getChannel().sendMessage("Usage: `,!fvcj <channel ID> (server ID)`").queue();
+					event.getChannel().sendMessage("Usage: `"+prefix+"!fvcj <channel ID> (server ID)`").queue();
 					return;
 				}
 				//Join execution

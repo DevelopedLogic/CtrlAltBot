@@ -3,6 +3,7 @@ package main;
 //This is the main class which sets everything up.
 
 import javax.security.auth.login.LoginException;
+import audio.AudioEvents;
 import developerEvents.*;
 import developerEvents.Shutdown;
 import events.*;
@@ -32,5 +33,6 @@ public class Main{
         Reg.register(new EnableAndDisableBackendUI());
         Reg.register(new ChannelIDGetter());
         Reg.register(new EasterEggs());
+        Reg.register(new AudioEvents());
     }
 }
