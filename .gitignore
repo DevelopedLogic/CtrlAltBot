@@ -1,2 +1,12 @@
-/.gradle/
-/build/
+# Ignore Gradle shit
+.gradle/
+
+# Ignore compiled shit
+bin/
+build/
+
+# Ignore IDE shit
+.idea/
+.settings/
+.classpath
+.project
