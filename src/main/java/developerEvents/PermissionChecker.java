@@ -17,8 +17,10 @@ public class PermissionChecker extends ListenerAdapter{
         }
 		if(message.equals(prefix+"!permissioncheck")){
 			if(isDeveloper){
+				main.ReactionAdder.addTick(event);
 				event.getChannel().sendMessage("You are registered as a developer!").queue();
 			}else{
+				main.ReactionAdder.addNoentry(event);
 				event.getChannel().sendMessage("You are not registered as a developer!").queue();
 			}
 		}

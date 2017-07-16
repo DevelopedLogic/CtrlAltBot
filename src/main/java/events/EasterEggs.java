@@ -10,11 +10,13 @@ public class EasterEggs extends ListenerAdapter{
     public void onMessageReceived(MessageReceivedEvent event){
 		String message = event.getMessage().getContent(); //Grab the actual message
 		if(message.equals("Ctrl+S")){
+			main.ReactionAdder.addTick(event);
 			EmbedBuilder eb = new EmbedBuilder(); //Make a fancy embed box
 	        eb.setDescription("Save complete!"); //Set the contents of the fancy embed box
 	        eb.setColor(new Color(255, 0, 0)); //Set the stripe colour of the fancy embed box
 			event.getChannel().sendMessage(eb.build()).queue(); //Send the fancy embed box as a message
 		}else if(message.equals("Ctrl+a")){
+			main.ReactionAdder.addTick(event);
 			EmbedBuilder eb = new EmbedBuilder(); //Make a fancy embed box
 	        eb.setDescription("Selected all!"); //Set the contents of the fancy embed box
 	        eb.setColor(new Color(255, 0, 0)); //Set the stripe colour of the fancy embed box

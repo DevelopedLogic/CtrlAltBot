@@ -22,11 +22,13 @@ public class Announce extends ListenerAdapter{
                 break;
             }
         }
-		if(isDeveloper){
-			if(message[0].equals(prefix+"!ann")){
+		if(message[0].equals(prefix+"!ann")){
+			if(isDeveloper){
 				if(message.length < 2){
 					event.getChannel().sendMessage("Usage: `"+prefix+"!ann <word> (word) (word)...`").queue(); //Have a go at the user for improper syntax
+					main.ReactionAdder.addCross(event);
 				}else{
+					main.ReactionAdder.addTick(event);
 					for(int i = 1; i < message.length; i++){
 						compiled = compiled+" "+message[i]; //Attach an argument to the string
 					}
@@ -38,6 +40,8 @@ public class Announce extends ListenerAdapter{
 						//We don't care, ignore it.
 					}
 				}
+			}else{
+				main.ReactionAdder.addNoentry(event);
 			}
 		}
     }

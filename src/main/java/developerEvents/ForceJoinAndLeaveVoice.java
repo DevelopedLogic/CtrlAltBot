@@ -18,34 +18,41 @@ public class ForceJoinAndLeaveVoice extends ListenerAdapter{
                 break;
             }
         }
-		if(isDeveloper){
 			if(message[0].equals(prefix+"!fvcj")){
-				if(message.length < 2){
-					event.getChannel().sendMessage("Usage: `"+prefix+"!fvcj <channel ID> (server ID)`").queue();
-					return;
-				}
-				//Join execution
-				if(message.length == 2){
-					AudioManager manager = event.getGuild().getAudioManager();
-					manager.openAudioConnection(event.getGuild().getVoiceChannelById(message[1]));
-					event.getChannel().sendMessage("Joined voice channel "+event.getGuild().getVoiceChannelById(message[1]).getName()+" on server "+event.getGuild().getName()).queue();
+				if(isDeveloper){
+					if(message.length < 2){
+						main.ReactionAdder.addCross(event);
+						event.getChannel().sendMessage("Usage: `"+prefix+"!fvcj <channel ID> (server ID)`").queue();
+						return;
+					}
+					main.ReactionAdder.addTick(event);
+					if(message.length == 2){
+						AudioManager manager = event.getGuild().getAudioManager();
+						manager.openAudioConnection(event.getGuild().getVoiceChannelById(message[1]));
+						event.getChannel().sendMessage("Joined voice channel "+event.getGuild().getVoiceChannelById(message[1]).getName()+" on server "+event.getGuild().getName()).queue();
+					}else{
+						AudioManager manager = vars.Handlers.jdaHandler.getGuildById(message[2]).getAudioManager();
+						manager.openAudioConnection(vars.Handlers.jdaHandler.getGuildById(message[2]).getVoiceChannelById(message[1]));
+						event.getChannel().sendMessage("Joined voice channel "+vars.Handlers.jdaHandler.getGuildById(message[2]).getVoiceChannelById(message[1]).getName()+" on server "+vars.Handlers.jdaHandler.getGuildById(message[2]).getName()).queue();
+					}
 				}else{
-					AudioManager manager = vars.Handlers.jdaHandler.getGuildById(message[2]).getAudioManager();
-					manager.openAudioConnection(vars.Handlers.jdaHandler.getGuildById(message[2]).getVoiceChannelById(message[1]));
-					event.getChannel().sendMessage("Joined voice channel "+vars.Handlers.jdaHandler.getGuildById(message[2]).getVoiceChannelById(message[1]).getName()+" on server "+vars.Handlers.jdaHandler.getGuildById(message[2]).getName()).queue();
+					main.ReactionAdder.addNoentry(event);
 				}
 			}else if(message[0].equals(prefix+"!fvcl")){
-				//Leave execution
-				if(message.length == 1){
-					AudioManager manager = event.getGuild().getAudioManager();
-					manager.closeAudioConnection();
-					event.getChannel().sendMessage("Left voice channel on server "+event.getGuild().getName()).queue();
+				if(isDeveloper){
+					main.ReactionAdder.addTick(event);
+					if(message.length == 1){
+						AudioManager manager = event.getGuild().getAudioManager();
+						manager.closeAudioConnection();
+						event.getChannel().sendMessage("Left voice channel on server "+event.getGuild().getName()).queue();
+					}else{
+						AudioManager manager = vars.Handlers.jdaHandler.getGuildById(message[1]).getAudioManager();
+						manager.closeAudioConnection();
+						event.getChannel().sendMessage("Left voice channel on server "+vars.Handlers.jdaHandler.getGuildById(message[1]).getName()).queue();
+					}
 				}else{
-					AudioManager manager = vars.Handlers.jdaHandler.getGuildById(message[1]).getAudioManager();
-					manager.closeAudioConnection();
-					event.getChannel().sendMessage("Left voice channel on server "+vars.Handlers.jdaHandler.getGuildById(message[1]).getName()).queue();
+					main.ReactionAdder.addNoentry(event);
 				}
 			}
-		}
     }
 }

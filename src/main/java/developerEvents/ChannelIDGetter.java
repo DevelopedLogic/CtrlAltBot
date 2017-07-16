@@ -15,9 +15,13 @@ public class ChannelIDGetter extends ListenerAdapter{
                 break;
             }
         }
-		if(isDeveloper){
-			if(message.equals(prefix+"!cid")){
+
+		if(message.equals(prefix+"!cid")){
+			if(isDeveloper){
+				main.ReactionAdder.addTick(event);
 				event.getChannel().sendMessage("The ID of this channel is: "+event.getChannel().getId()).queue();
+			}else{
+				main.ReactionAdder.addNoentry(event);
 			}
 		}
     }

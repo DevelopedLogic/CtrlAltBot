@@ -15,8 +15,7 @@ repositories {
 }
 
 dependencies {
-  compile 'net.dv8tion:JDA:3.1.1_210'
-  compile 'com.sedmelluq:lavaplayer:1.2.39'
+  compile 'net.dv8tion:JDA:3.1.1_210''
 }
 
 compileJava.options.encoding = 'UTF-8'

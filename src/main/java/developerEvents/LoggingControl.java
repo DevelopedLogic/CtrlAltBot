@@ -15,13 +15,21 @@ public class LoggingControl extends ListenerAdapter{
                 break;
             }
         }
-		if(isDeveloper){
-			if(message.equals(prefix+"!el")){
+		if(message.equals(prefix+"!el")){
+			if(isDeveloper){
+				main.ReactionAdder.addTick(event);
 				vars.BotConfig.log = true;
 				event.getChannel().sendMessage("Enabled Chat Logging!").queue();
-			}else if(message.equals(prefix+"!dl")){
+			}else{
+				main.ReactionAdder.addNoentry(event);
+			}
+		}else if(message.equals(prefix+"!dl")){
+			if(isDeveloper){
+				main.ReactionAdder.addTick(event);
 				vars.BotConfig.log = false;
 				event.getChannel().sendMessage("Disabled Chat Logging!").queue();
+			}else{
+				main.ReactionAdder.addNoentry(event);
 			}
 		}
     }

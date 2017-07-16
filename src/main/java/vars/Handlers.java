@@ -10,4 +10,5 @@ public class Handlers{
 	public static JDA jdaHandler;
 	public static JLabel uiOnlineStatus;
 	public static AudioPlayerManager lavaplayer;
+	public static boolean uiAllowed;
 }

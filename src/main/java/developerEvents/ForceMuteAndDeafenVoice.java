@@ -16,9 +16,9 @@ public class ForceMuteAndDeafenVoice extends ListenerAdapter{
                 break;
             }
         }
-		if(isDeveloper){
-			if(message[0].equals(prefix+"!fvcm")){
-				//Join execution
+		if(message[0].equals(prefix+"!fvcm")){
+			if(isDeveloper){
+				main.ReactionAdder.addTick(event);
 				if(message.length == 2){
 					AudioManager manager = vars.Handlers.jdaHandler.getGuildById(message[1]).getAudioManager();
 					if(manager.isSelfMuted()){
@@ -38,8 +38,12 @@ public class ForceMuteAndDeafenVoice extends ListenerAdapter{
 						event.getChannel().sendMessage("Muted myself on server "+event.getGuild().getName()).queue();
 					}
 				}
-			}else if(message[0].equals(prefix+"!fvcd")){
-				//Join execution
+			}else{
+				main.ReactionAdder.addNoentry(event);
+			}
+		}else if(message[0].equals(prefix+"!fvcd")){
+			if(isDeveloper){
+				main.ReactionAdder.addTick(event);
 				if(message.length == 2){
 					AudioManager manager = vars.Handlers.jdaHandler.getGuildById(message[1]).getAudioManager();
 					if(manager.isSelfDeafened()){
@@ -59,6 +63,8 @@ public class ForceMuteAndDeafenVoice extends ListenerAdapter{
 						event.getChannel().sendMessage("Deafened myself on server "+event.getGuild().getName()).queue();
 					}
 				}
+			}else{
+				main.ReactionAdder.addNoentry(event);
 			}
 		}
     }

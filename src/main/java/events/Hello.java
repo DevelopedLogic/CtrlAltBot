@@ -13,6 +13,7 @@ public class Hello extends ListenerAdapter{
 		String prefix = vars.BotConfig.prefix; //Grab the prefix locally
 		String message = event.getMessage().getContent(); //Grab the actual message
 		if(message.equals(prefix+"hello")){
+			main.ReactionAdder.addTick(event);
 			EmbedBuilder eb = new EmbedBuilder(); //Make a fancy embed box
 	        eb.setDescription("Hello "+event.getAuthor().getAsMention()); //Set the contents of the fancy embed box
 	        eb.setColor(new Color(255, 0, 0)); //Set the stripe colour of the fancy embed box

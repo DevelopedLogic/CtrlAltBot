@@ -15,19 +15,37 @@ public class StateControls extends ListenerAdapter{
                 break;
             }
         }
-		if(isDeveloper){
-			if(message.equals(prefix+"!dnd")){
+		if(message.equals(prefix+"!dnd")){
+			if(isDeveloper){
+				main.ReactionAdder.addTick(event);
 				main.State.setDnd();
 				event.getChannel().sendMessage("Do Not Disturb Mode!").queue();
-			}else if(message.equals(prefix+"!online")){
+			}else{
+				main.ReactionAdder.addNoentry(event);
+			}
+		}else if(message.equals(prefix+"!online")){
+			if(isDeveloper){
+				main.ReactionAdder.addTick(event);
 				main.State.setOnline();
 				event.getChannel().sendMessage("Online Mode!").queue();
-			}else if(message.equals(prefix+"!idle")){
+			}else{
+				main.ReactionAdder.addNoentry(event);
+			}
+		}else if(message.equals(prefix+"!idle")){
+			if(isDeveloper){
+				main.ReactionAdder.addTick(event);
 				main.State.setIdle();
 				event.getChannel().sendMessage("Idle Mode!").queue();
-			}else if(message.equals(prefix+"!offline")){
+			}else{
+				main.ReactionAdder.addNoentry(event);
+			}
+		}else if(message.equals(prefix+"!offline")){
+			if(isDeveloper){
+				main.ReactionAdder.addTick(event);
 				main.State.setOffline();
 				event.getChannel().sendMessage("Offline Mode!").queue();
+			}else{
+				main.ReactionAdder.addNoentry(event);
 			}
 		}
     }

@@ -18,8 +18,9 @@ public class Shutdown extends ListenerAdapter{
                 break;
             }
         }
-		if(isDeveloper){
-			if(message.equals(prefix+"!quit")){
+		if(message.equals(prefix+"!quit")){
+			if(isDeveloper){
+				main.ReactionAdder.addTick(event);
 				event.getChannel().sendMessage("Bot backend will shut down in 3 seconds!").queue(); //Send a confirmation message
 				main.State.setDnd(); //Make the bot have a Do Not Disturb status
 				try{
@@ -28,6 +29,8 @@ public class Shutdown extends ListenerAdapter{
 					e.printStackTrace();
 				}
 				main.State.shutdown(); //Shut the bot down
+			}else{
+				main.ReactionAdder.addNoentry(event);
 			}
 		}
     }

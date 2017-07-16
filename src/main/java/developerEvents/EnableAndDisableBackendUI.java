@@ -15,13 +15,23 @@ public class EnableAndDisableBackendUI extends ListenerAdapter{
                 break;
             }
         }
-		if(isDeveloper){
-			if(message.equals(prefix+"!eui")){
+		if(message.equals(prefix+"!eui")){
+			if(isDeveloper){
+				main.ReactionAdder.addTick(event);
 				vars.Handlers.ui.setVisible(true);
 				event.getChannel().sendMessage("Enabled Backend UI!").queue();
-			}else if(message.equals(prefix+"!dui")){
+				main.ReactionAdder.addTick(event);
+			}else{
+				main.ReactionAdder.addNoentry(event);
+			}
+		}else if(message.equals(prefix+"!dui")){
+			if(isDeveloper){
+				main.ReactionAdder.addTick(event);
 				vars.Handlers.ui.setVisible(false);
 				event.getChannel().sendMessage("Disabled Backend UI!").queue();
+				main.ReactionAdder.addTick(event);
+			}else{
+				main.ReactionAdder.addNoentry(event);
 			}
 		}
     }
