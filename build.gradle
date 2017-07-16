@@ -1,4 +1,4 @@
-plugins {
+plugins{
   id 'java'
   id 'application'
   id 'com.github.johnrengelman.shadow' version '1.2.4'
@@ -10,12 +10,12 @@ version '1.0'
 
 sourceCompatibility = 1.8
 
-repositories {
+repositories{
   jcenter()
 }
 
-dependencies {
-  compile 'net.dv8tion:JDA:3.1.1_210'
+dependencies{
+  compile 'net.dv8tion:JDA:3.2.0_226'
 }
 
 compileJava.options.encoding = 'UTF-8'
