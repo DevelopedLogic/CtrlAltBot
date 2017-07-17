@@ -6,6 +6,10 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
+import java.awt.event.WindowListener;
+import uiComponents.ShutdownButton;
 
 public class UI{
 	public static void init(){
@@ -21,10 +25,17 @@ public class UI{
 		pane.add(shutdownButton); //put the Shutdown button in the container
 		pane.add(statusLabel); //Put the Online Status text in the container
 		
-		shutdownButton.addActionListener(uiComponents.ShutdownButton.action); //Assign a function to the Shutdown button
+		shutdownButton.addActionListener(ShutdownButton.action); //Assign a function to the Shutdown button
 		
 		ui.pack(); //Make everything fit the window
-		ui.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE); //Disable the window's close button
 		ui.setVisible(true); //Make the window appear
+
+        WindowListener exitListener = new WindowAdapter() {
+            @Override
+            public void windowClosing(WindowEvent e) {
+                ShutdownButton.Shutdown();
+            }
+        };
+        ui.addWindowListener(exitListener);
 	}
 }
